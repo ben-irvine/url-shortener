@@ -20,10 +20,11 @@ router.get('/:url', (req, res) => {
   
   router.post('/', (req, res) => {
     console.log("route is running a POST request")
-      console.log(req.body)
-    db.createURL(req.body)
-      .then(todo => {
-        res.send(todo)
+      console.log(req.body.data)
+    db.createURL(req.body.data)
+      .then(data => {
+          console.log("data", data)
+        res.send(data)
       })
       .catch(err => {
         res.status(500).send( "it broke :/" )
