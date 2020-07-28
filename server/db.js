@@ -43,7 +43,7 @@ function getURL(url, db = connection) {
 
 async function createURL(newURL, db = connection) {
     console.log("post url db func hit")
-
+    
     return makeid(4)
         .then(shortUrl => {
             return db('urls')
