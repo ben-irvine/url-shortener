@@ -24,7 +24,7 @@ router.get('/:url', (req, res) => {
     db.createURL(req.body.data)
       .then(data => {
           console.log("data", data)
-        res.send(data)
+        res.send({data})
       })
       .catch(err => {
         res.status(500).send( "it broke :/" )
