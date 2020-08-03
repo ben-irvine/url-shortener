@@ -5,11 +5,21 @@
   "main": "index.js",
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
-    "dev": "run-p dev:server",
+    "dev": "run-p dev:client dev:server",
     "dev:client": "webpack --watch",
     "dev:server": "nodemon server",
     "server": "node server",
     "test": "jest --watchAll"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +32,20 @@
     "sqlite3": "^5.0.0",
     "superagent": "^5.3.1",
     "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^25.3.0",
+    "babel-loader": "^8.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
   }
 }
