@@ -1,5 +1,6 @@
 import React from 'react'
 import {ShortenUrl} from "../API/api"
+import NewUrl from "./NewUrl"
 
 class Create extends React.Component {
    
@@ -28,14 +29,15 @@ state = {
             <h3>Enter your URL:</h3>
             <input id="url-input" type="text" name="full_url" placeholder="Your URL goes here" />
             <button id="submit" onClick={this.handleSubmit}>Submit</button>
-            <div>
-            {this.state.shortendUrls.length > 0 ? 
+            <div className="url-box">
+            {(this.state.shortendUrls.length > 0) ?
             this.state.shortendUrls.map((elem, i) => {
                 console.log("runing foreach: ", elem)
-                return <div key={i}>old: {elem.original} new:  <a href={elem.newUrl}>{elem.newUrl}</a> </div>
+                return <NewUrl key={i} shortUrl={elem.newUrl} original={elem.original}/>
             })
-            : 
-            "false"}
+            :
+            ""
+            }
             </div>
         </>
     )
