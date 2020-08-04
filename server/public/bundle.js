@@ -144,6 +144,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -153,16 +155,38 @@ var App = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(App);
 
   function App() {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "createUserId", function () {
+      var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&?";
+      var userId = "";
+
+      for (var i = 0; i < 30; i++) {
+        userId += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+
+      return userId;
+    });
+
+    return _this;
   }
 
   _createClass(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       console.log(localStorage.userId);
-      if (localStorage.userId == undefined) localStorage.setItem('userId', Math.floor(Math.random() * 100000));
+
+      if (localStorage.userId == undefined) {
+        localStorage.setItem('userId', this.createUserId());
+      }
     }
   }, {
     key: "render",
