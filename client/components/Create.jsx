@@ -25,20 +25,28 @@ state = {
     return (
 
         <>
+           
+            <div className="mainInfo">
             <h1>Rubin and Ben's URL Shortener</h1>
             <h3>Enter your URL:</h3>
             <input id="url-input" type="text" name="full_url" placeholder="Your URL goes here" />
             <button id="submit" onClick={this.handleSubmit}>Submit</button>
-            <div className="url-box">
+            </div>
+            
             {(this.state.shortendUrls.length > 0) ?
-            this.state.shortendUrls.map((elem, i) => {
+            <div className="yourUrls-wrap animate__animated animate__fadeIn animate__faster">
+            <h2>Your urls:</h2>
+            <div className="url-box">
+            {this.state.shortendUrls.map((elem, i) => {
                 console.log("runing foreach: ", elem)
                 return <NewUrl key={i} shortUrl={elem.newUrl} original={elem.original}/>
-            })
+            })}
+            </div>
+            </div>
             :
             ""
             }
-            </div>
+           
         </>
     )
     }

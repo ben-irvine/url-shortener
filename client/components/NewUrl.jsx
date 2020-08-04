@@ -5,7 +5,7 @@ class NewUrl extends React.Component {
     return (
         <>
            
-            <div className="newUrl"> <p>{this.props.original}</p> <h2><a href={this.props.shortUrl}>{this.props.shortUrl}</a></h2> </div>
+            <div className="newUrl animate__animated animate__flipInX "> <p>{this.props.original}</p> <h2><a href={this.props.shortUrl}>{this.props.shortUrl}</a></h2> </div>
         </>
     )
     }

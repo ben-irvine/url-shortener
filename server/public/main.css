@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(5, 77, 170);
+    /* background-color: chartreuse; */
+}
+.url-box{
+    width: 90%;
+    background-color: rgb(9, 93, 202);
+    min-height: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+.newUrl {
+    background-color: rgb(64, 135, 228);
+    /* margin-bottom: 15px; */
+    margin: 15px;
+    margin-top: 15px;
+}
+.mainInfo {
+    margin-left: auto;
+    margin-right: auto;
+   
+    color: white;
+    width: 80%;
+    text-align: center;
+    
+}
+.yourUrls-wrap {
+    
+}
+@keyframes glideUp {
+    0% {
+
+    }
+    100% {
+
+    }
+}
