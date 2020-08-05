@@ -1,7 +1,8 @@
 const knex = require('knex')
 const config = require('../knexfile')
-const env = process.env.NODE_ENV || 'development'
-const connection = knex(config[env])
+const environment = process.env.NODE_ENV || 'development'
+const connection = knex(config[environment])
+
 
 //in this code I use async functions even though I could have just made it easyer for my self. 
 //I did this just to play around with how they work mught chnage it later
