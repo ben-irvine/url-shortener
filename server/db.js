@@ -50,15 +50,16 @@ function getURL(url, db = connection) {
         .select()
 }
 
-async function createURL(newURL, db = connection) {
+async function createURL(data, db = connection) {
     console.log("post url db func hit")
     
     return makeid(4)
         .then(shortUrl => {
             return db('urls')
                 .insert({
-                    full_url: newURL,
-                    short_url: shortUrl
+                    full_url: data.url,
+                    short_url: shortUrl,
+                    creator: data.user
                 })
                 .then(() => {
                     console.log(shortUrl)

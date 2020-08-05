@@ -101,7 +101,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function ShortenUrl(url) {
   return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/urls").send({
-    data: url
+    url: url,
+    user: localStorage.getItem("userId")
   }).then(function (res) {
     return res.body;
   });

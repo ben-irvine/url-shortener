@@ -5,8 +5,8 @@ const db = require("../../db")
   
   router.post('/', (req, res) => {
     console.log("route is running a POST request")
-      console.log(req.body.data)
-    db.createURL(req.body.data)
+      console.log(req.body)
+    db.createURL(req.body)
       .then(data => {
           console.log("data", data)
         res.send({data})
