@@ -13,12 +13,15 @@ class App extends React.Component {
         }
         return userId
     }
-
+    
     componentDidMount(){
         console.log(localStorage.userId)
-        if(localStorage.userId == undefined) {
-            
+        if(localStorage.getItem("userId") == undefined) {
+            console.log("user id not found")
             localStorage.setItem('userId', this.createUserId())
+        }
+        else{
+            console.log("user exits")
         }
     }
     render(){

@@ -100,7 +100,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
 
 function ShortenUrl(url) {
-  console.log("data looks like", url);
   return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/v1/urls").send({
     data: url
   }).then(function (res) {
@@ -184,8 +183,11 @@ var App = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       console.log(localStorage.userId);
 
-      if (localStorage.userId == undefined) {
+      if (localStorage.getItem("userId") == undefined) {
+        console.log("user id not found");
         localStorage.setItem('userId', this.createUserId());
+      } else {
+        console.log("user exits");
       }
     }
   }, {
@@ -277,7 +279,6 @@ var Create = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function () {
       Object(_API_api__WEBPACK_IMPORTED_MODULE_1__["ShortenUrl"])(document.getElementById("url-input").value).then(function (res) {
-        console.log("res is ", res);
         var stuff = {
           hello: "blah"
         };
@@ -312,7 +313,6 @@ var Create = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your urls:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "url-box"
       }, this.state.shortendUrls.map(function (elem, i) {
-        console.log("runing foreach: ", elem);
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NewUrl__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: i,
           shortUrl: elem.newUrl,

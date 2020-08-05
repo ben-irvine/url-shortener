@@ -12,7 +12,7 @@ state = {
     handleSubmit = () => {
         ShortenUrl(document.getElementById("url-input").value)
         .then(res => {
-            console.log("res is ", res)
+            
             let stuff = {hello: "blah"}
             this.setState({
                 shortendUrls: [...this.state.shortendUrls, {original: document.getElementById("url-input").value, newUrl: window.location + res.data}]
@@ -38,7 +38,7 @@ state = {
             <h2>Your urls:</h2>
             <div className="url-box">
             {this.state.shortendUrls.map((elem, i) => {
-                console.log("runing foreach: ", elem)
+                
                 return <NewUrl key={i} shortUrl={elem.newUrl} original={elem.original}/>
             })}
             </div>
