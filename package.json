@@ -1,9 +1,6 @@
 {
   "name": "url-shortener",
   "version": "1.0.0",
-  "engines": {
-    "node": "12.17.0"
-  },
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,8 +10,8 @@
     "dev:server": "nodemon server",
     "server": "node server",
     "test": "jest --watchAll",
-    "postinstall": "webpack && knex migrate:latest",
-    "start": "node server"
+    "build": "webpack && knex migrate:latest",
+    "start": "run-s build server"
   },
   "babel": {
     "presets": [
