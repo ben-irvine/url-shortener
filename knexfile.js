@@ -38,7 +38,7 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'urls'
+      tableName: 'knex_migrations'
     }
   }
 
