@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "12.17.0"
+  },
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
     "dev": "run-p dev:client dev:server",
