@@ -1,5 +1,5 @@
 import React from 'react'
-import {ShortenUrl} from "../API/api"
+import {ShortenUrl, getMyUrls} from "../API/api"
 import NewUrl from "./NewUrl"
 
 class Create extends React.Component {
@@ -9,10 +9,25 @@ state = {
     ]
 }
    
+    componentDidMount(){
+        getMyUrls(localStorage.getItem("userId"))
+            .then(res=>{
+                console.log(res)
+                let newarr = res.map(elem=>{
+                    return {original: elem.full_url, newUrl: window.location + elem.short_url}
+                })
+                console.log("the new arr", newarr)
+
+                this.setState({
+                    shortendUrls: [...this.state.shortendUrls, ...newarr]
+                })
+            })
+    }
+
     handleSubmit = () => {
         ShortenUrl(document.getElementById("url-input").value)
         .then(res => {
-            console.log("res is ", res)
+            
             let stuff = {hello: "blah"}
             this.setState({
                 shortendUrls: [...this.state.shortendUrls, {original: document.getElementById("url-input").value, newUrl: window.location + res.data}]
@@ -38,7 +53,7 @@ state = {
             <h2>Your urls:</h2>
             <div className="url-box">
             {this.state.shortendUrls.map((elem, i) => {
-                console.log("runing foreach: ", elem)
+                
                 return <NewUrl key={i} shortUrl={elem.newUrl} original={elem.original}/>
             })}
             </div>
