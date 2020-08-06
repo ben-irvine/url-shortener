@@ -90,12 +90,13 @@
 /*!***************************!*\
   !*** ./client/API/api.js ***!
   \***************************/
-/*! exports provided: ShortenUrl */
+/*! exports provided: ShortenUrl, getMyUrls */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShortenUrl", function() { return ShortenUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMyUrls", function() { return getMyUrls; });
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "./node_modules/superagent/lib/client.js");
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -105,6 +106,12 @@ function ShortenUrl(url) {
     user: localStorage.getItem("userId")
   }).then(function (res) {
     return res.body;
+  });
+}
+function getMyUrls(creator) {
+  console.log("get my urls :", creator);
+  return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/urls/".concat(creator)).then(function (res) {
+    return res.body.data;
   });
 }
 
@@ -166,7 +173,8 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "createUserId", function () {
-      var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&?";
+      //origanly had mode charictors but when i send it as a param with them it breaks the param
+      var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
       var userId = "";
 
       for (var i = 0; i < 30; i++) {
@@ -297,6 +305,26 @@ var Create = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Create, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      Object(_API_api__WEBPACK_IMPORTED_MODULE_1__["getMyUrls"])(localStorage.getItem("userId")).then(function (res) {
+        console.log(res);
+        var newarr = res.map(function (elem) {
+          return {
+            original: elem.full_url,
+            newUrl: window.location + elem.short_url
+          };
+        });
+        console.log("the new arr", newarr);
+
+        _this2.setState({
+          shortendUrls: [].concat(_toConsumableArray(_this2.state.shortendUrls), _toConsumableArray(newarr))
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

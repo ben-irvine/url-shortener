@@ -71,7 +71,13 @@ async function createURL(data, db = connection) {
         })
 }
 
+function findURL (name, db = connection) {
+    return db("urls")
+        .where("creator", name)
+}
+
 module.exports = {
     getURL,
     createURL,
+    findURL,
 }

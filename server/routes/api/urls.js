@@ -17,4 +17,14 @@ const db = require("../../db")
       })
   })
   
+  router.get("/:uid", (req, res) => {
+    console.log("router is running a GET request")
+    console.log("param: "+ req.params.uid)
+    db.findURL(req.params.uid)
+    .then(data => {
+      console.log("found: ", data)
+      res.send({data})
+    })
+  })
+
   module.exports = router
