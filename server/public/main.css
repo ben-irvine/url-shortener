@@ -35,3 +35,32 @@ body {
 
     }
 }
+input {
+    width: 60%;
+    height: 2vw;
+    border: none;
+    box-shadow: 7px 11px 20px 0px #000000b5;
+    margin-right: 2%;
+}
+input:focus {
+    outline: none;
+    transform: scale(1.03);
+    box-shadow: 1px 10px 15px 7px #0000008e;
+}
+input:hover {
+    transform: scale(1.03);
+    box-shadow: 1px 10px 15px 7px #0000008e;
+}
+button {
+    outline: none;
+    width: 7%;
+    height: 2.1vw;
+    border: none;
+}
+button:hover {
+    background-color: rgb(223, 255, 210);
+    transform: scale(1.1);
+}
+button:active {
+    background-color: rgb(176, 228, 156);
+}
