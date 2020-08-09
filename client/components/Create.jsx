@@ -53,7 +53,6 @@ state = {
             <h2>Your urls:</h2>
             <div className="url-box">
             {this.state.shortendUrls.map((elem, i) => {
-                
                 return <NewUrl key={i} shortUrl={elem.newUrl} original={elem.original}/>
             })}
             </div>

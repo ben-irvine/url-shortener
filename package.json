@@ -13,7 +13,7 @@
     "dev:server": "nodemon server",
     "server": "node server",
     "test": "jest --watchAll",
-    "build": "webpack && knex migrate:latest",
+    "build": "webpack --config webpack-stage.config.js --progress --profile --colors --display-error-details --debug",
     "start": "run-s build server"
   },
   "babel": {
