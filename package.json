@@ -14,7 +14,7 @@
     "server": "node server",
     "test": "jest --watchAll",
     "build": "webpack && knex migrate:latest",
-    "start": "run-s build server"
+    "start": "node server"
   },
   "babel": {
     "presets": [
