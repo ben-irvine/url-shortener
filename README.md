@@ -1,5 +1,6 @@
 # url-shortener
 Rubin and Beans simple URL shortener
+http://smurl.herokuapp.com/
 ## API
 | Method | EndPoint | Usage | Response |
 | ----- | ------ | ----- | ----- |
